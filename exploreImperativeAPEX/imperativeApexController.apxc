@@ -1,0 +1,18 @@
+public with sharing class imperativeApexController {
+    public imperativeApexController() {
+
+    }
+    @AuraEnabled
+    public static void insertAccount(){
+        System.debug('im in insert method');
+      Account a=new Account();
+        a.name='imperative apex'+Datetime.now();
+        insert a;
+        return a;
+    }
+}
+//we can also use cacheable equals to true in imperative apex,However we will be using it very rarely
+//if we want our apex to work as server side then refine yourself from using cacheable equals tru
+//imperative apex is used only to perform any DML operations
+//99% of the time imperative apex will get invoke either by clicking on the button or on the link
+//where as wired apex will be invoked by the framework itself 

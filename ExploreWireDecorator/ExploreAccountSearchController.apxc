@@ -1,0 +1,11 @@
+public with sharing class ExploreAccountSearchController {
+    public ExploreAccountSearchController() {
+
+    }
+    @AuraEnabled(cacheable=true)
+    public static list<Account> search(String SearchText){
+        SearchText='%'+SearchText+'%';
+        return [select id,name,Industry, Rating from Account where name like: SearchText];
+    }
+}
+//SearchText is exact from the js which helps to filter the values
